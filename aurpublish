@@ -5,7 +5,7 @@
 # usage and other awkward blocks of preformatted text
 
 usage() {
-	cat <<- _EOF_
+	cat <<-_EOF_
 		Usage: ${0##*/} [OPTIONS] PACKAGE
 		Push a subtree to the AUR
 
@@ -26,23 +26,23 @@ usage() {
 		                      useful if changes were pulled from the AUR
 		                      (because \`git log\` isn't very good at reading
 		                      subtrees).
-_EOF_
+	_EOF_
 }
 
 ssh_config() {
-	cat <<- _EOF_
+	cat <<-_EOF_
 		\`\`\`
 		Host aur aur.archlinux.org
 		    User aur
 		    Hostname aur.archlinux.org
 		    IdentityFile ~/.ssh/keys/aur
 		\`\`\`
-_EOF_
+	_EOF_
 }
 
 # check if pkgname is already committed in git, relative to repository root
 is_package_in_git() {
-    git ls-tree -d --name-only HEAD | grep -E "^${1}$" > /dev/null 2>&1
+    git ls-tree -d --name-only HEAD | grep -E "^${1}$" >/dev/null 2>&1
 }
 
 #### Do the great option check
@@ -51,31 +51,31 @@ if [[ $# -eq 0 ]]; then
     echo "error: No arguments passed. aurpublish needs a package to upload."
     exit 1
 fi
-while [[ "${1}" != "" ]]; do
+while [[ ${1} != "" ]]; do
     case ${1} in
-        -h|--help)
+        -h | --help)
             usage
             exit
-            ;;
-        -p|--pull)
+        ;;
+        -p | --pull)
             PULL_SUBTREE=1
             shift
             package=$(readlink -m "${1}")
             package=${package##*/}
-            ;;
-        -s|--speedup)
+        ;;
+        -s | --speedup)
             SPEEDUP=1
-            ;;
+        ;;
         log)
             LOG=1
-            while [[ ! -d "${2}" ]]; do
+            while [[ ! -d ${2} ]]; do
                 log_pre_opts+=("${2}")
                 shift
             done
-            ;;
+        ;;
         setup)
             SETUP=1
-            ;;
+        ;;
         *)
             if [[ -n ${package} ]]; then
                 echo "error: multiple packages specified"
@@ -83,8 +83,8 @@ while [[ "${1}" != "" ]]; do
             fi
             package=$(readlink -m "${1}")
             package=${package##*/}
-            (( LOG )) && break
-            ;;
+            ((LOG)) && break
+        ;;
     esac
     shift
 done
@@ -93,15 +93,15 @@ done
 
 # Run from the repository root, no matter where the script is installed.
 toplevel=$(git rev-parse --show-toplevel) || exit 1
-if [[ $(git rev-parse --is-inside-git-dir) = true ]]; then
+if [[ $(git rev-parse --is-inside-git-dir) == true ]]; then
     echo "error: cannot be run from within GIT_DIR"
     exit 1
-elif [[ ! ${toplevel} -ef ${PWD} ]]; then
-    cd "${toplevel}"
+    elif [[ ! ${toplevel} -ef ${PWD} ]]; then
+    cd "${toplevel}" || exit
 fi
 
 # sanity check
-if (( ! ( PULL_SUBTREE || SETUP ) )) && ! is_package_in_git "${package}"; then
+if ((!(PULL_SUBTREE || SETUP))) && ! is_package_in_git "${package}"; then
     echo "${0##*/}: unrecognized package '${1}'"
     echo "Try '${0##*/} --help' for more information."
     exit 1
@@ -109,10 +109,10 @@ fi
 
 #### INIT
 
-if (( SETUP )); then
+if ((SETUP)); then
     echo "Adding commit hooks..."
     shopt -s nullglob
-    for hook in "@HOOKSDIR@"/*.hook; do
+    for hook in *.hook; do
         hookname=${hook##*/}
         echo "-> ${hookname}"
         ln -sf "${hook}" "$(git rev-parse --git-dir)/hooks/${hookname%.hook}"
@@ -122,26 +122,26 @@ if (( SETUP )); then
     exit 0
 fi
 
-if (( LOG )); then
+if ((LOG)); then
     shift
-    git log "${log_pre_opts[@]}" $(git subtree split -P "${package}") "$@"
+    git log "${log_pre_opts[@]}" "$(git subtree split -P "${package}")" "$@"
     exit 0
 fi
 
 pkgbase="$(sed -rn 's/pkgbase = (.*)/\1/p' "${package}"/.SRCINFO 2>/dev/null)"
 
-if (( PULL_SUBTREE )); then
+if ((PULL_SUBTREE)); then
     # test if prefix already exists
-    if is_package_in_git ${package}; then
+    if is_package_in_git "${package}"; then
         git subtree split -P "${package}" --rejoin
-        git subtree pull -P "${package}" aur:${pkgbase}.git master -m "Merge subtree '${package}'"
+        git subtree pull -P "${package}" aur:"${pkgbase}".git master -m "Merge subtree '${package}'"
     else
-        git subtree add -P "${package}" aur:${package}.git master
+        git subtree add -P "${package}" aur:"${package}".git master
     fi
     exit 0
 fi
 
-if (( SPEEDUP )); then
+if ((SPEEDUP)); then
     git subtree split -P "${package}" --rejoin
 fi
-git subtree push -P "${package}" aur:${pkgbase}.git master
+git subtree push -P "${package}" aur:"${pkgbase}".git master
