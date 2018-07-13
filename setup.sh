@@ -1,8 +1,7 @@
 #!/bin/bash
 
-usage()
-{
-	cat <<- _EOF_
+usage() {
+	cat <<-_EOF_
 		Usage: ./setup.sh [OPTIONS] COMMAND...
 		Set up infrastructure for tracking PKGBUILDs.
 
@@ -15,18 +14,18 @@ usage()
 		    hooks               link hooks from repo root to
 		                          githooks directory. Must be
 		                          run from repo root.
-_EOF_
+	_EOF_
 }
 
 ssh() {
     echo "Adding ssh-config rules (this will clear previous rules for 'aur')..."
     sed -ri '/^Host aur(( aur)?.*\.archlinux\.org)?$/,+3d' ~/.ssh/config
-	cat <<- _EOF_ >> ~/.ssh/config
+	cat <<-_EOF_ >>~/.ssh/config
 		Host aur aur.archlinux.org
 		    User aur
 		    Hostname aur.archlinux.org
 		    IdentityFile ${keypath}
-_EOF_
+	_EOF_
 }
 
 hooks() {
@@ -44,7 +43,7 @@ if [[ $# -eq 0 ]]; then
 fi
 while [[ "${1}" != "" ]]; do
     case ${1} in
-        -h|--help)
+        -h | --help)
             usage
             exit
         ;;
@@ -60,6 +59,7 @@ while [[ "${1}" != "" ]]; do
             echo "${0}: unrecognized option '${1}'"
             echo "Try '${0} --help' for more information."
             exit 1
+        ;;
     esac
     shift
 done
