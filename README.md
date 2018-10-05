@@ -2,7 +2,7 @@
 
 Things I maintain, checked into git as subtrees for easier management or pull requests.
 
-Powered by [aurpublish](https://github.com/eli-schwartz/aurpublish) from [eli-schwartz](https://github.com/eli-schwartz)
+Powered by [aurpublish](https://www.archlinux.org/packages/community/any/aurpublish/) from [eli-schwartz](https://github.com/eli-schwartz)
 
 ## How it works
 
