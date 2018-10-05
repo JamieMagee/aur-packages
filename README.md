@@ -29,11 +29,11 @@ View the git log of a package subtree.
 
 ## Hooks
 
-### pre-commit
+### `pre-commit`
 
 Warn about whitespace errors, fail if checksums don't match, and auto-generate .SRCINFO for all changed PKGBUILDs.
 
-### prepare-commit-msg
+### `prepare-commit-msg`
 
 Prefill the commit message with a list of added/updated/deleted packages + versions (if any).
 
