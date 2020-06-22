@@ -2,6 +2,7 @@
 *.tar*
 *.tgz
 *.zip
+*.oxt
 
 # signed sources
 *.asc
