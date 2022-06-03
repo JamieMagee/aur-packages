@@ -1,6 +1,6 @@
 # Maintainer: Jamie Magee <jamie DOT magee AT gmail DOT com>
 _npmname=azurite
-pkgname=nodejs-azurite
+pkgname=nodejs-azurite # renovate: datasource=github-tags depName=Azure/Azurite
 pkgver=3.17.0
 pkgrel=1
 pkgdesc="A lightweight server clone of Azure Storage that simulates most of the commands supported by it with minimal dependencies"
