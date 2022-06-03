@@ -32,9 +32,10 @@ jobs:
           path: ${{ env.pkgbuild }}
           updpkgsums: true
           srcinfo: true
+          aur: true
 
       - name: Commit
         if: ${{ env.pkgbuild != '' }}
         uses: stefanzweifel/git-auto-commit-action@49620cd3ed21ee620a48530e81dba0d139c9cb80 # tag=v4
         with:
-          file_pattern: "*/PKGBUILD */.SRCINFO"
+          file_pattern: '*/PKGBUILD */.SRCINFO'
