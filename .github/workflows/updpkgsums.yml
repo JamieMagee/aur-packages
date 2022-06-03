@@ -26,6 +26,7 @@ jobs:
           echo "pkgbuild=$(git diff --name-only origin/main origin/${GITHUB_HEAD_REF} "*PKGBUILD" | head -1 | xargs dirname)" >> $GITHUB_ENV
 
       - name: Validate package
+        if: ${{ env.pkgbuild != '' }}
         uses: hapakaien/archlinux-package-action@v2
         with:
           path: ${{ env.pkgbuild }}
@@ -33,6 +34,7 @@ jobs:
           srcinfo: true
 
       - name: Commit
+        if: ${{ env.pkgbuild != '' }}
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
           file_pattern: "*/PKGBUILD */.SRCINFO"
