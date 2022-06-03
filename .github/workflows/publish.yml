@@ -16,15 +16,16 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Get updated PKGBUILD
+      - name: Find updated package
         run: |
           #!/usr/bin/env bash
           set -euxo pipefail
 
-          echo "pkgbuild=$(git diff --name-only HEAD HEAD~1 "*PKGBUILD" | head -1 | xargs dirname)" >> $GITHUB_ENV
+          echo "pkgbuild=$(git diff --name-only HEAD HEAD~1 "*/.SRCINFO" | head -1 | xargs dirname)" >> $GITHUB_ENV
 
-      - name: Publish
+      - name: Publish package
         uses: KSXGitHub/github-actions-deploy-aur@v2.2.5
+        if: ${{ env.pkgbuild != '' }}
         with:
           pkgname: ${{ env.pkgbuild }}
           pkgbuild: ${{ env.pkgbuild }}/PKGBUILD
