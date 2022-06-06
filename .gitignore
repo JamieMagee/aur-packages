@@ -13,7 +13,7 @@
 
 # subfolders, e.g. source or built package trees, vcs
 */**/
-!.github/workflows
+!.github/
 
 # backup files
 *~
