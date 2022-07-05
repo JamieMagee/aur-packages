@@ -1,7 +1,7 @@
 # Maintainer: Jamie Magee <jamie dot magee at gmail dot com>
 
 pkgname=gitsign
-pkgver=0.1.1 # renovate: datasource=github-tags depName=sigstore/gitsign
+pkgver=0.2.0 # renovate: datasource=github-tags depName=sigstore/gitsign
 pkgrel=1
 pkgdesc='Keyless Git signing using Sigstore'
 arch=(any)
