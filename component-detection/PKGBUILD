@@ -23,11 +23,10 @@ build() {
     --configuration Release \
     --self-contained true \
     --runtime linux-x64 \
-    -property:PublishTrimmed=true \
-    -property:MinVerSkip=true"
-    -property:PackageVersion=${pkgver}
-    -property:AssemblyVersion=${pkgver}.0
-    -property:FileVersion=${pkgver}.0
+    -property:MinVerSkip=true \
+    -property:PackageVersion=${pkgver} \
+    -property:AssemblyVersion=${pkgver}.0 \
+    -property:FileVersion=${pkgver}.0 \
     --output $pkgname \
     "./src/${_name}/${_name}.csproj"
 }
