@@ -16,6 +16,7 @@ b2sums=('158b3f828d5081a08dea21347c78a58cc88de48f58d5f26481f0167f4a24f96a6c1d859
 
 build() {
   cd "$pkgname-$pkgver"
+  rm global.json
   DOTNET_SYSTEM_GLOBALIZATION_INVARIANT=1 \
   MSBUILDDISABLENODEREUSE=1 \
   dotnet publish \
