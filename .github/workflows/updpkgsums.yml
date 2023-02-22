@@ -9,7 +9,7 @@ on:
       - main
 
 jobs:
-  updpkgsum:
+  updpkgsums:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -27,12 +27,10 @@ jobs:
 
       - name: Validate package
         if: ${{ env.pkgbuild != '' }}
-        uses: hapakaien/archlinux-package-action@v2
+        uses: ./.github/actions/aur
         with:
-          path: ${{ env.pkgbuild }}
-          updpkgsums: true
-          srcinfo: true
-          aur: true
+          action: 'updpkgsums'
+          pkgname: ${{ env.pkgbuild }}
 
       - name: Commit
         if: ${{ env.pkgbuild != '' }}
