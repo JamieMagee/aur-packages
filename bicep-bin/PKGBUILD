@@ -1,7 +1,7 @@
 # Maintainer: Jamie Magee <jamie dot magee at gmail dot com>
 _name=bicep
 pkgname=$_name-bin
-pkgver=0.12.1 # renovate: datasource=github-tags depName=Azure/bicep
+pkgver=0.14.85 # renovate: datasource=github-tags depName=Azure/bicep
 pkgrel=1
 pkgdesc="Bicep is a declarative language for describing and deploying Azure resources"
 arch=('x86_64')
