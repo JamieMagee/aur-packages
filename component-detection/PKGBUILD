@@ -12,7 +12,7 @@ depends=('icu')
 makedepends=('dotnet-sdk-6.0')
 options=("staticlibs")
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/microsoft/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
-b2sums=('158b3f828d5081a08dea21347c78a58cc88de48f58d5f26481f0167f4a24f96a6c1d859df3ee3e2ab62dad924dcf8319f01ff538d827ecf2c7ed9d21318d57da')
+b2sums=('eb6ace6fd055136bb3908094eb4a548246398b7167d566f8f36e36b3e0ad25b5654370adf6f8993adcd6f86fc87676ca8352e16a5e00123c516e83aa9d5fcf97')
 
 build() {
   cd "$pkgname-$pkgver"
