@@ -1,42 +1,17 @@
-# PKGBUILDs for [Arch User Repository](https://aur.archlinux.org/)
+# PKGBUILDs for [Arch User Repository (AUR)][1]
 
-Things I maintain, checked into git as subtrees for easier management or pull requests.
+AUR packages that I maintain.
 
-Powered by [aurpublish](https://www.archlinux.org/packages/community/any/aurpublish/) from [eli-schwartz](https://github.com/eli-schwartz)
-
-## How it works
-
-Commit PKGBUILDs in named subdirectories. Export them to the AUR with the `aurpublish` command, using the subtree push stratagem.
-This preserves an independent history for third-party hosting, pull requests... ;)
-
-## Commands
-
-### `aurpublish setup`
-
-Initialize a new repository with [githooks](#hooks).
-
-### `aurpublish PACKAGE`
-
-Push PACKAGE to the AUR. With "--speedup", merges the split history back in.
-
-### `aurpublish -p PACKAGE`
-
-Pull package from the AUR (if you adopted an existing package, or have a co-maintainer).
-
-### `aurpublish log PACKAGE`
-
-View the git log of a package subtree.
-
-## Hooks
-
-### `pre-commit`
-
-Warn about whitespace errors, fail if checksums don't match, and auto-generate .SRCINFO for all changed PKGBUILDs.
-
-### `prepare-commit-msg`
-
-Prefill the commit message with a list of added/updated/deleted packages + versions (if any).
+Check out my blog post, [Maintaining AUR packages with Renovate][2], for step-by-step breakdown of how I update these packages using [Renovate][3].
+If you own any AUR packages and want to automate some of the maintenance burden, check out [the AUR packages template GitHub repository][4] I created
 
 ## License
 
-[MIT](LICENSE)
+All code in this repository is licensed under [the MIT license][5].
+See the `license` property in each `PKGBUILD` for the license under which each package is distributed.
+
+[1]: https://aur.archlinux.org
+[2]: https://jamiemagee.co.uk/blog/maintaining-aur-packages-with-renovate/
+[3]: github.com/apps/renovate
+[4]: https://github.com/JamieMagee/aur-packages-template
+[5]: https://opensource.org/licenses/MIT
