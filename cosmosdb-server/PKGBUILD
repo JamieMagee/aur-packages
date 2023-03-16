@@ -1,7 +1,7 @@
 # Maintainer: Jamie Magee <jamie DOT magee AT gmail DOT com>
-_npmname=@zeit/cosmosdb-server
+_npmname=@vercel/cosmosdb-server
 pkgname=cosmosdb-server
-pkgver=0.14.0 # renovate: datasource=github-tags depName=vercel/cosmosdb-server
+pkgver=0.14.0 # renovate: datasource=npm depName=@vercel/cosmosdb-server
 pkgrel=2
 pkgdesc="A Cosmos DB server implementation for testing your applications locally."
 arch=(any)
