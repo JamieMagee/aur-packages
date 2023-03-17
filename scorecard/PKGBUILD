@@ -1,7 +1,7 @@
 # Maintainer: Jamie Magee <jamie dot magee at gmail dot com>
 
 pkgname=scorecard
-pkgver=4.10.2 # renovate: datasource=github-tags depName=ossf/scorecard
+pkgver=4.10.4 # renovate: datasource=github-tags depName=ossf/scorecard
 pkgrel=1
 pkgdesc='Security health metrics for Open Source'
 arch=(any)
