@@ -12,7 +12,7 @@ conflicts=($_name)
 options=('!strip')
 source=("${pkgname}-${pkgver}::https://github.com/Azure/${_name}/releases/download/v${pkgver}/${_name}-linux-x64"
   "https://raw.githubusercontent.com/Azure/${_name}/v${pkgver}/LICENSE")
-b2sums=('c7ed9a74a93f1d0223a66f801b2df893177612b890e675afd100b3786fb8d193bdef769ac0e53883640f82c6a3a487911761388961dc9e9dda2dcb0139b5b4df'
+b2sums=('2b55066498f182031bc57c2ffb54cfc9304cae979b7b50959da65811b331c70554ad82fed4d2e36ad9fd6f797f459da4dd95e9f3a5cb7da5b4adad6b527ac2c2'
         '1e0a143630bdf1d10e34a180d83b967ca132c6c976b5a7c93c1452b6747d3f05ed0aab8c7ef7436af61971ebab7b9fc6aa7378784e3776d8913c6825a6cb3e74')
 
 package() {
