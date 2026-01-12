@@ -1,7 +1,7 @@
 # Maintainer: Jamie Magee <jamie dot magee at gmail dot com>
 
 pkgname=nixfmt
-pkgver=1.1.0 # renovate: datasource=github-tags depName=NixOS/nixfmt
+pkgver=1.2.0 # renovate: datasource=github-tags depName=NixOS/nixfmt
 pkgrel=1
 pkgdesc="Official formatter for Nix code"
 url="https://github.com/NixOS/nixfmt"
