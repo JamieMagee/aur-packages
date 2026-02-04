@@ -8,8 +8,8 @@ WORKDIR /home/builder
 USER builder
 
 # Install paru
-RUN git clone https://aur.archlinux.org/paru-bin.git
-WORKDIR /home/builder/paru-bin
+RUN git clone https://aur.archlinux.org/paru.git
+WORKDIR /home/builder/paru
 RUN makepkg -si --noconfirm
 
 COPY entrypoint.sh /entrypoint.sh
