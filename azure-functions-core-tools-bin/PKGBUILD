@@ -12,7 +12,7 @@ conflicts=($_name)
 optdepends=('dotnet-runtime: to install extensions') # https://github.com/Azure/azure-functions-core-tools/issues/367
 options=('staticlibs')
 source=("https://github.com/Azure/${_name}/releases/download/${pkgver}/Azure.Functions.Cli.linux-x64.${pkgver}.zip")
-b2sums=('8d14ebac36762fd10ef6e87d40a533bcba21a0ea73af3542d35fcf6c556760f5ea4e7b3752ddf862f2c3d356c1734607ba3aecb9c91cbf784810c4d5d5a5a5fa')
+b2sums=('d298539797b4043d09a5a873ee29e7867f58f9377898e529413938dbb36d95f7832fa978974e907323b43c601aba9a9f1040e98b1a08ab59f5813d0a8bfb8212')
 
 package() {
 	install -dm 755 "${pkgdir}/usr/lib/${_name}/"
